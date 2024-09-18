@@ -34,7 +34,11 @@ resource "aws_security_group" "allow_ssh_terraform" {
         ipv6_cidr_blocks = ["::/0"]
     }
 
-    tags = {
-        Name = "allow_ssh1"
-    }
+
+    tags = merge(
+        var.common_tags,
+        {
+            Name = "allow-ssh1"
+        }
+    )
 }
